@@ -116,6 +116,16 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TheGameGeneratorLib\TheGameGeneratorLib.vbproj">
+      <Project>{76438450-2314-4fa7-b0cf-164c274a13e0}</Project>
+      <Name>TheGameGeneratorLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TheGameGenerator\TheGameGenerator.vbproj">
+      <Project>{d7aaba9d-b080-4762-9b8d-036e67173f92}</Project>
+      <Name>TheGameGenerator</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
