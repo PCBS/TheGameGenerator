@@ -64,6 +64,8 @@
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Transactions" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
@@ -107,6 +109,30 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="recepty.vb">
+      <DependentUpon>TheGameDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TheGameDB.Context.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TheGameDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TheGameDB.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TheGameDB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="TheGameDB.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TheGameDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="veci.vb">
+      <DependentUpon>TheGameDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vyzkumy.vb">
+      <DependentUpon>TheGameDB.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -128,6 +154,26 @@
     </None>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <EntityDeploy Include="TheGameDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>TheGameDB.Designer.vb</LastGenOutput>
+    </EntityDeploy>
+    <None Include="TheGameDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TheGameDB.edmx</DependentUpon>
+      <LastGenOutput>TheGameDB.Context.vb</LastGenOutput>
+    </None>
+    <None Include="TheGameDB.edmx.diagram">
+      <DependentUpon>TheGameDB.edmx</DependentUpon>
+    </None>
+    <None Include="TheGameDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TheGameDB.edmx</DependentUpon>
+      <LastGenOutput>TheGameDB.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
