@@ -12,7 +12,11 @@ Public Class Form1
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-
+        Button1.Enabled = False
+        For Each v In Data.GetAllItems
+            Log.Debug("{@Item}", v)
+        Next
+        Button1.Enabled = True
     End Sub
 End Class
 ''' <summary>
