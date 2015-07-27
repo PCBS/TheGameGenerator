@@ -18,11 +18,11 @@ Imports Microsoft.VisualStudio.TestTools.UnitTesting
         Assert.IsNotNull(TestContext.DataRow)
     End Sub
 
-    <DataSource("TheGameDB")> <TestMethod()> Public Sub TestRecepty()
+    <DataSource("recepty")> <TestMethod()> Public Sub TestRecepty()
         Assert.IsNotNull(TestContext.DataRow)
     End Sub
 
-    <DataSource("TheGameDB")> <TestMethod()> Public Sub TestVyzkumy()
+    <DataSource("vyzkumy")> <TestMethod()> Public Sub TestVyzkumy()
         Assert.IsNotNull(TestContext.DataRow)
     End Sub
 
