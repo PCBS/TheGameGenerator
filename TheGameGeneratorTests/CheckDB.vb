@@ -30,7 +30,8 @@ Imports Microsoft.VisualStudio.TestTools.UnitTesting
 #End Region
 
     <DataSource("veci")> <TestMethod()> Public Sub TestVeci()
-        Assert.IsNotNull(TestContext.DataRow("nazev"))
+        Assert.IsFalse(TestContext.DataRow("nazev").ToString = "")
+        'Assert.IsFalse(TestContext.DataRow())
     End Sub
 
 End Class
