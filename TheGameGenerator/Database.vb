@@ -11,7 +11,6 @@
         Return DB.vecis
     End Function
 
-
 #Region "Generate Groups"
     Public Function GenerateMB_CPUPairs()
         Throw New NotImplementedException
