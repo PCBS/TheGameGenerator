@@ -95,7 +95,6 @@
     <Import Include="Microsoft.VisualStudio.TestTools.UnitTesting" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TestLib.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -112,7 +111,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="CheckDB.vb" />
-    <Compile Include="TestMain.vb" />
+    <Compile Include="TestDatabase.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -136,10 +135,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TheGameGeneratorLib\TheGameGeneratorLib.vbproj">
-      <Project>{76438450-2314-4fa7-b0cf-164c274a13e0}</Project>
-      <Name>TheGameGeneratorLib</Name>
-    </ProjectReference>
     <ProjectReference Include="..\TheGameGenerator\TheGameGenerator.vbproj">
       <Project>{d7aaba9d-b080-4762-9b8d-036e67173f92}</Project>
       <Name>TheGameGenerator</Name>
