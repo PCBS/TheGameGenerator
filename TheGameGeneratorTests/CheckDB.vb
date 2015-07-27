@@ -14,15 +14,15 @@ Imports Microsoft.VisualStudio.TestTools.UnitTesting
     End Property
 
 
-    <DataSource("veci")> <TestMethod()> Public Sub TestVeci()
+    <DataSource("veci")> <TestMethod()> Public Sub TestVeciNotNull()
         Assert.IsNotNull(TestContext.DataRow)
     End Sub
 
-    <DataSource("recepty")> <TestMethod()> Public Sub TestRecepty()
+    <DataSource("recepty")> <TestMethod()> Public Sub TestReceptyNotNull()
         Assert.IsNotNull(TestContext.DataRow)
     End Sub
 
-    <DataSource("vyzkumy")> <TestMethod()> Public Sub TestVyzkumy()
+    <DataSource("vyzkumy")> <TestMethod()> Public Sub TestVyzkumyNotNull()
         Assert.IsNotNull(TestContext.DataRow)
     End Sub
 
