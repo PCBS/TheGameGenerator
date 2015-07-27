@@ -25,7 +25,23 @@
 
 End Class
 Public Class PC
-    Public Sub SelectPSU(DB As TheGameDB)
+    Public MB As veci
+    Public CPU As veci
+    Public GPU As List(Of veci)
+    Public RAM As List(Of veci)
+    Public HDD As veci
+    Public PSU As veci
+    Private _vykon As Integer = -1
+    Public ReadOnly Property Vykon() As Integer
+        Get
+            If _vykon = -1 Then
+                _vykon = GetVykon()
+            End If
+            Return _vykon
+        End Get
+    End Property
+
+    Public Sub AddBestPSU(DB As TheGameDB)
         Throw New NotImplementedException
     End Sub
     Private Function ResearchNeeded(DB As TheGameDB) As vyzkumy
@@ -34,4 +50,9 @@ Public Class PC
     Sub New()
         Throw New NotImplementedException
     End Sub
+
+    Private Function GetVykon() As Integer
+        Throw New NotImplementedException
+    End Function
+
 End Class
