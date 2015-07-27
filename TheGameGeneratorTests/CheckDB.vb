@@ -51,6 +51,7 @@ Imports Microsoft.VisualStudio.TestTools.UnitTesting
                 Assert.IsTrue(TestContext.DataRow("spotreba") > 0)
                 Assert.AreNotEqual("", TestContext.DataRow("socket"), String.Format("Socket for CPU id='{0}' nazev='{1}' is empty!", TestContext.DataRow("idveci"), TestContext.DataRow("nazev")))
                 Assert.AreEqual("", TestContext.DataRow("sloty"))
+                'TODO: pridat ostatni kontroly, prozatim spoleham ze databaze bude OK
             Case "gpu"
             Case "ram"
             Case "hdd"
