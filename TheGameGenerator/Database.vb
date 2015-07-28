@@ -39,7 +39,35 @@ Public Class PC
 
     Private Property GPUvykon As Integer
 
-    Private Property RAMmodifier As Integer
+    Public ReadOnly Property RAMmodifier As Double
+        Get
+            Dim ramkap As Integer = RAM.Sum(Function(ram) ram.vykon)
+            Select Case ramkap
+                Case Is >= 64
+                    Return 2.0
+                Case Is >= 32
+                    Return 1.8
+                Case Is >= 24
+                    Return 1.6
+                Case Is >= 16
+                    Return 1.4
+                Case Is >= 12
+                    Return 1.2
+                Case Is >= 8
+                    Return 1.0
+                Case Is >= 6
+                    Return 0.8
+                Case Is >= 4
+                    Return 0.6
+                Case Is >= 2
+                    Return 0.4
+                Case Is >= 1
+                    Return 0.2
+                Case Else
+                    Return 0
+            End Select
+        End Get
+    End Property
 
     Private Property HDDmodifier As Integer
 
@@ -68,7 +96,9 @@ Public Class PC
     Sub New(_mb As veci, _cpu As veci, _gpu As List(Of veci), _ram As List(Of veci), _hdd As veci)
         MB = _mb
         CPU = _cpu
+        GPU = New List(Of veci)
         GPU.AddRange(_gpu)
+        RAM = New List(Of veci)
         RAM.AddRange(_ram)
         HDD = _hdd
     End Sub
@@ -85,7 +115,9 @@ Public Class PC
     Sub New(_mb As veci, _cpu As veci, _gpu As List(Of veci), _ram As List(Of veci), _hdd As veci, DB As TheGameDB)
         MB = _mb
         CPU = _cpu
+        GPU = New List(Of veci)
         GPU.AddRange(_gpu)
+        RAM = New List(Of veci)
         RAM.AddRange(_ram)
         HDD = _hdd
         AddBestPSU(DB)
@@ -103,7 +135,9 @@ Public Class PC
     Sub New(_mb As veci, _cpu As veci, _gpu As List(Of veci), _ram As List(Of veci), _hdd As veci, _psu As veci)
         MB = _mb
         CPU = _cpu
+        GPU = New List(Of veci)
         GPU.AddRange(_gpu)
+        RAM = New List(Of veci)
         RAM.AddRange(_ram)
         HDD = _hdd
         PSU = _psu
