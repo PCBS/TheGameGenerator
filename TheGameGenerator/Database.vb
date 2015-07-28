@@ -31,15 +31,17 @@ Public Class PC
     Public RAM As List(Of veci)
     Public HDD As veci
     Public PSU As veci
-    Private _vykon As Integer = -1
     Public ReadOnly Property Vykon() As Integer
         Get
-            If _vykon = -1 Then
-                _vykon = GetVykon()
-            End If
-            Return _vykon
+            Return Math.Min(CPU.vykon, GPUvykon) * 2 * RAMmodifier * HDDmodifier
         End Get
     End Property
+
+    Private Property GPUvykon As Integer
+
+    Private Property RAMmodifier As Integer
+
+    Private Property HDDmodifier As Integer
 
     Public Sub AddBestPSU(DB As TheGameDB)
         Throw New NotImplementedException
@@ -47,12 +49,64 @@ Public Class PC
     Private Function ResearchNeeded(DB As TheGameDB) As vyzkumy
         Throw New NotImplementedException
     End Function
+    ''' <summary>
+    '''
+    ''' </summary>
+    ''' <remarks></remarks>
     Sub New()
         Throw New NotImplementedException
     End Sub
-
-    Private Function GetVykon() As Integer
-        Throw New NotImplementedException
-    End Function
+    ''' <summary>
+    '''
+    ''' </summary>
+    ''' <param name="_mb"></param>
+    ''' <param name="_cpu"></param>
+    ''' <param name="_gpu"></param>
+    ''' <param name="_ram"></param>
+    ''' <param name="_hdd"></param>
+    ''' <remarks></remarks>
+    Sub New(_mb As veci, _cpu As veci, _gpu As List(Of veci), _ram As List(Of veci), _hdd As veci)
+        MB = _mb
+        CPU = _cpu
+        GPU.AddRange(_gpu)
+        RAM.AddRange(_ram)
+        HDD = _hdd
+    End Sub
+    ''' <summary>
+    '''
+    ''' </summary>
+    ''' <param name="_mb"></param>
+    ''' <param name="_cpu"></param>
+    ''' <param name="_gpu"></param>
+    ''' <param name="_ram"></param>
+    ''' <param name="_hdd"></param>
+    ''' <param name="DB"></param>
+    ''' <remarks></remarks>
+    Sub New(_mb As veci, _cpu As veci, _gpu As List(Of veci), _ram As List(Of veci), _hdd As veci, DB As TheGameDB)
+        MB = _mb
+        CPU = _cpu
+        GPU.AddRange(_gpu)
+        RAM.AddRange(_ram)
+        HDD = _hdd
+        AddBestPSU(DB)
+    End Sub
+    ''' <summary>
+    '''
+    ''' </summary>
+    ''' <param name="_mb"></param>
+    ''' <param name="_cpu"></param>
+    ''' <param name="_gpu"></param>
+    ''' <param name="_ram"></param>
+    ''' <param name="_hdd"></param>
+    ''' <param name="_psu"></param>
+    ''' <remarks></remarks>
+    Sub New(_mb As veci, _cpu As veci, _gpu As List(Of veci), _ram As List(Of veci), _hdd As veci, _psu As veci)
+        MB = _mb
+        CPU = _cpu
+        GPU.AddRange(_gpu)
+        RAM.AddRange(_ram)
+        HDD = _hdd
+        PSU = _psu
+    End Sub
 
 End Class
