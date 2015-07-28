@@ -1,4 +1,6 @@
-﻿Imports System
+﻿Imports System.Resources
+
+Imports System
 Imports System.Reflection
 Imports System.Runtime.InteropServices
 
@@ -8,17 +10,17 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("TheGameGenerator")>
-<Assembly: AssemblyDescription("")>
-<Assembly: AssemblyCompany("")>
-<Assembly: AssemblyProduct("TheGameGenerator")>
-<Assembly: AssemblyCopyright("Copyright ©  2015")>
-<Assembly: AssemblyTrademark("")>
+<Assembly: AssemblyTitle("TheGameGenerator")> 
+<Assembly: AssemblyDescription("Generates builds for TheGame")> 
+<Assembly: AssemblyCompany("")> 
+<Assembly: AssemblyProduct("TheGameGenerator")> 
+<Assembly: AssemblyCopyright("Jozef Hollý Copyright ©  2015")> 
+<Assembly: AssemblyTrademark("")> 
 
-<Assembly: ComVisible(False)>
+<Assembly: ComVisible(False)> 
 
 'The following GUID is for the ID of the typelib if this project is exposed to COM
-<Assembly: Guid("90c2dece-0ee1-417e-825b-c7e2c2f381a5")>
+<Assembly: Guid("90c2dece-0ee1-417e-825b-c7e2c2f381a5")> 
 
 ' Version information for an assembly consists of the following four values:
 '
@@ -31,5 +33,6 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")>
 
-<Assembly: AssemblyVersion("1.0.0.0")>
+<Assembly: AssemblyVersion("1.0.0.0")> 
 <Assembly: AssemblyFileVersion("1.0.0.0")> 
+<Assembly: NeutralResourcesLanguageAttribute("en")> 
