@@ -34,22 +34,32 @@ Public Class Database
         Next
         Return MB_CPU_pairs
     End Function
-    Public Function GenerateGPUPairs(maxGPUs As Integer) As List(Of List(Of veci))
-        Dim groups As New List(Of List(Of veci))
-
-        Return groups
-    End Function
-
-    Public Function GenerateGPUPairs() As List(Of List(Of veci))
-        Dim groups As New List(Of List(Of veci))
-        Dim gpus As New List(Of veci)
-        gpus.AddRange(DB.vecis.Where(Function(a) a.typ = "gpu"))
-        For Each gpu In gpus
-            Dim l As New List(Of veci)
-            l.Add(gpu)
-            groups.Add(l)
-        Next
-        Return groups
+    Public Function GenerateGPUPairs(maxGPUs As UInteger) As List(Of List(Of veci))
+        Select Case maxGPUs
+            Case 0
+                Return (GenerateGPUPairs(DB.vecis.Where(Function(v) v.typ = "mb").Max(Function(mb) CInt(mb.sloty.Split(";")(1)))))
+            Case 1
+                Dim groups As New List(Of List(Of veci))
+                Dim gpus As New List(Of veci)
+                gpus.AddRange(DB.vecis.Where(Function(a) a.typ = "gpu"))
+                For Each gpu In gpus
+                    Dim l As New List(Of veci)
+                    l.Add(gpu)
+                    groups.Add(l)
+                Next
+                Return groups
+            Case Else
+                Dim groups As New List(Of List(Of veci))
+                For Each gpulist In GenerateGPUPairs(maxGPUs - 1)
+                    For Each gpu In GenerateGPUPairs(1)
+                        Dim l As New List(Of veci)
+                        l.AddRange(gpulist)
+                        l.AddRange(gpu)
+                        groups.Add(l)
+                    Next
+                Next
+                Return groups
+        End Select
     End Function
 
     Public Function GenerateRAMPairs()

@@ -34,7 +34,13 @@ Imports TheGameGenerator
 
     <TestMethod()> Public Sub TestGPUsingles()
         Dim DB As New TheGameGenerator.Database
-        Dim pairs = DB.GenerateGPUPairs()
+        Dim pairs = DB.GenerateGPUPairs(1)
+        Assert.AreEqual(46, pairs.Count, 0, "There are not exactly 46 GPUs. Did the Database change?")
+    End Sub
+
+    <TestMethod()> Public Sub TestGPUall()
+        Dim DB As New TheGameGenerator.Database
+        Dim pairs = DB.GenerateGPUPairs(0)
         Assert.AreEqual(46, pairs.Count, 0, "There are not exactly 46 GPUs. Did the Database change?")
     End Sub
 
