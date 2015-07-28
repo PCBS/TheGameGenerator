@@ -6,9 +6,10 @@ Public Class Form1
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         NativeMethods.AllocateConsole() 'Remove in production
         Me.BringToFront()
-        Log.Logger = (New LoggerConfiguration).WriteTo.LiterateConsole.MinimumLevel.Debug.CreateLogger()
-        Log.Information("Form1_Load")
-
+        Dim logfile As String = My.Computer.FileSystem.GetTempFileName()
+        Log.Logger = (New LoggerConfiguration).WriteTo.LiterateConsole.WriteTo.File(logfile).MinimumLevel.Debug.CreateLogger()
+        Log.Information("TheGameGenerator version {version}", My.Application.Info.Version.ToString)
+        Log.Debug("Writing log to {logfile}", logfile)
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
