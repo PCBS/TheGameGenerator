@@ -24,9 +24,11 @@ Imports TheGameGenerator
     <TestMethod()> Public Sub TestMB_CPUPairs()
         Dim DB As New TheGameGenerator.Database
         Dim pairs = DB.GenerateMB_CPUPairs()
-        Assert.AreEqual(0, pairs.Count)
+        Assert.AreEqual(77, pairs.Count, 0, "There are not exactly 77 MB-CPU pairs. Did the Database change?")
         For Each pair As veci() In pairs
-            Assert.AreEqual(pair(0).socket, pair(1).socket)
+            Assert.AreNotEqual("", pair(0).socket)
+            Assert.AreNotEqual("", pair(1).socket)
+            Assert.AreEqual(pair(0).socket, pair(1).socket, String.Format("Mismatched MB-CPU pair! id:{0} and id:{1} have differnet sockets!", pair(0).idveci, pair(1).idveci))
         Next
     End Sub
 
