@@ -13,8 +13,20 @@ Public Class Database
     End Function
 
 #Region "Generate Groups"
-    Public Function GenerateMB_CPUPairs()
-        Throw New NotImplementedException
+    Public Function GenerateMB_CPUPairs() As List(Of veci())
+        Dim MB_CPU_pairs As New List(Of veci())
+        Dim mbs As New List(Of veci)
+        mbs.AddRange(DB.vecis.Where(Function(a) a.typ = "mb"))
+        For Each _mb As veci In mbs
+            Dim cpus As New List(Of veci)
+            cpus.AddRange(DB.vecis.Where(Function(a) a.typ = "cpu" And a.socket = _mb.socket))
+            For Each _cpu As veci In cpus
+                Log.Debug("Selected pair MB: name:{MBname} socket:{MBsocket} with a CPU: name:{CPUname} socket:{CPUsocket}", _mb.nazev, _mb.socket, _cpu.nazev, _cpu.socket)
+                Log.Verbose("Selected pair {@MB} with {@CPU}", _mb, _cpu)
+                MB_CPU_pairs.Add({_mb, _cpu})
+            Next
+        Next
+        Return MB_CPU_pairs
     End Function
     Public Function GenerateGPUPairs()
         Throw New NotImplementedException
@@ -22,6 +34,11 @@ Public Class Database
     Public Function GenerateRAMPairs()
         Throw New NotImplementedException
     End Function
+
+    Public Function GenerateAllPCs()
+        Throw New NotImplementedException
+    End Function
+
 #End Region
 
 End Class
