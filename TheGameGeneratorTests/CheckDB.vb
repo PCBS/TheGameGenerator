@@ -13,23 +13,24 @@ Imports Microsoft.VisualStudio.TestTools.UnitTesting
         End Set
     End Property
 
-#Region "CheckDatabaseNotNull"
+    '#Region "CheckDatabaseNotNull"
 
-    <DataSource("veci")> <TestMethod()> Public Sub TestVeciNotNull()
-        Assert.IsNotNull(TestContext.DataRow)
-    End Sub
+    '    <DataSource("veci")> <TestMethod()> Public Sub TestVeciNotNull()
+    '        Assert.IsNotNull(TestContext.DataRow)
+    '    End Sub
 
-    <DataSource("recepty")> <TestMethod()> Public Sub TestReceptyNotNull()
-        Assert.IsNotNull(TestContext.DataRow)
-    End Sub
+    '    <DataSource("recepty")> <TestMethod()> Public Sub TestReceptyNotNull()
+    '        Assert.IsNotNull(TestContext.DataRow)
+    '    End Sub
 
-    <DataSource("vyzkumy")> <TestMethod()> Public Sub TestVyzkumyNotNull()
-        Assert.IsNotNull(TestContext.DataRow)
-    End Sub
+    '    <DataSource("vyzkumy")> <TestMethod()> Public Sub TestVyzkumyNotNull()
+    '        Assert.IsNotNull(TestContext.DataRow)
+    '    End Sub
 
-#End Region
+    '#End Region
 
     <DataSource("veci")> <TestMethod()> Public Sub TestVeciValues()
+        Assert.IsNotNull(TestContext.DataRow)
         Assert.IsTrue(Integer.TryParse(TestContext.DataRow("idveci"), Nothing))
         Assert.IsFalse(TestContext.DataRow("nazev").ToString = "")
         Select Case TestContext.DataRow("typ")
