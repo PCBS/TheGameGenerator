@@ -12,9 +12,9 @@ Imports System.Runtime.InteropServices
 
 <Assembly: AssemblyTitle("TheGameGenerator")> 
 <Assembly: AssemblyDescription("Generates builds for TheGame")> 
-<Assembly: AssemblyCompany("")> 
+<Assembly: AssemblyCompany("Jozef Hollý")> 
 <Assembly: AssemblyProduct("TheGameGenerator")> 
-<Assembly: AssemblyCopyright("Jozef Hollý Copyright ©  2015")> 
+<Assembly: AssemblyCopyright("Copyright ©  2015")> 
 <Assembly: AssemblyTrademark("")> 
 
 <Assembly: ComVisible(False)> 

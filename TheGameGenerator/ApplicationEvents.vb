@@ -1,5 +1,6 @@
 ﻿Namespace My
-    ' The following events are available for MyApplication:
+
+    ' The following events are available for MyApplication:
     '
     ' Startup: Raised when the application starts, before the startup form is created.
     ' Shutdown: Raised after all application forms are closed.  This event is not raised if the application terminates abnormally.
@@ -9,7 +10,7 @@
     Partial Friend Class MyApplication
 
         Private Sub MyApplication_UnhandledException(sender As Object, e As ApplicationServices.UnhandledExceptionEventArgs) Handles Me.UnhandledException
-            Throw New NotImplementedException 'TODO: Add log file sender
+            'MsgBox(e.Exception.ToString, MsgBoxStyle.Critical, Err.Number & " - " & Err.Description)
         End Sub
     End Class
 
