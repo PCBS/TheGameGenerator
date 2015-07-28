@@ -4,7 +4,7 @@ Public Class Form1
     Dim Data As New Database
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Win32.AllocConsole()
+        Win32.AllocConsole() 'Remove in production
         Me.BringToFront()
         Log.Logger = (New LoggerConfiguration).WriteTo.LiterateConsole.MinimumLevel.Verbose.CreateLogger()
         Log.Information("Form1_Load")
@@ -14,7 +14,7 @@ Public Class Form1
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Button1.Enabled = False
         For Each v In Data.GetAllItems
-            Log.Debug("{@Item}", v)
+            Log.Debug("Item: {@Item}", v)
         Next
         Button1.Enabled = True
     End Sub

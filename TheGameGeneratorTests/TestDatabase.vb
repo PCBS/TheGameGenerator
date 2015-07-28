@@ -4,7 +4,7 @@ Imports TheGameGenerator
 
 <TestClass()> Public Class TestDatabase
 
-    <TestMethod()> Public Sub TestMethod1()
+    <TestMethod()> Public Sub CreateAnInstanceOfDatabase()
         Assert.IsNotNull(New TheGameGenerator.Database)
     End Sub
 

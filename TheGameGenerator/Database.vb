@@ -1,4 +1,5 @@
-﻿Public Class Database
+﻿Imports Serilog
+Public Class Database
     Dim DB As New TheGameDB()
     Sub New()
 
@@ -101,6 +102,7 @@ Public Class PC
         RAM = New List(Of veci)
         RAM.AddRange(_ram)
         HDD = _hdd
+        Log.Information("Creating a PC ({@PC})", Me)
     End Sub
     ''' <summary>
     '''
@@ -121,6 +123,7 @@ Public Class PC
         RAM.AddRange(_ram)
         HDD = _hdd
         AddBestPSU(DB)
+        Log.Information("Creating a PC ({@PC})", Me)
     End Sub
     ''' <summary>
     '''
@@ -141,6 +144,7 @@ Public Class PC
         RAM.AddRange(_ram)
         HDD = _hdd
         PSU = _psu
+        Log.Information("Creating a PC ({@PC})", Me)
     End Sub
 
 End Class
