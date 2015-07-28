@@ -41,7 +41,7 @@ Imports TheGameGenerator
     <TestMethod()> Public Sub TestGPUall()
         Dim DB As New TheGameDB
         Dim Data As New TheGameGenerator.Database
-        Dim count = Math.Pow(DB.vecis.Where(Function(v) v.typ = "mb").Count, DB.vecis.Where(Function(v) v.typ = "mb").Max(Function(mb) CInt(mb.sloty.Split(";")(1))))
+        Dim count = Math.Pow(DB.vecis.Where(Function(v) v.typ = "gpu").Count, DB.vecis.Where(Function(v) v.typ = "mb").Max(Function(mb) CInt(mb.sloty.Split(";")(1))))
         Dim pairs = Data.GenerateGPUPairs(0)
         Assert.AreEqual(count, pairs.Count, 0, "There are not exactly " & count & " GPU pairs. Did the Database change?")
     End Sub
