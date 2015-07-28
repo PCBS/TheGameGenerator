@@ -1,9 +1,15 @@
 ﻿Imports Serilog
 Public Class Database
+    Implements IDisposable
     Dim DB As New TheGameDB()
     Sub New()
 
     End Sub
+
+    Public Sub Dispose() Implements IDisposable.Dispose
+        Me.DB.Dispose()
+    End Sub
+
     Public Function GetItemInfo(id As Integer) As veci
         Return DB.vecis.Find(id)
     End Function

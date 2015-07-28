@@ -4,7 +4,7 @@ Public Class Form1
     Dim Data As New Database
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Win32.AllocConsole() 'Remove in production
+        NativeMethods.AllocateConsole() 'Remove in production
         Me.BringToFront()
         Log.Logger = (New LoggerConfiguration).WriteTo.LiterateConsole.MinimumLevel.Debug.CreateLogger()
         Log.Information("Form1_Load")
@@ -27,8 +27,11 @@ End Class
 ''' Used to Show console for logging and debugging
 ''' </summary>
 ''' <remarks></remarks>
-Public Class Win32
+Public Class NativeMethods
     <DllImport("kernel32.dll")>
-    Public Shared Function AllocConsole() As Boolean
+    Private Shared Function AllocConsole() As Boolean
     End Function
+    Public Shared Sub AllocateConsole()
+        AllocConsole()
+    End Sub
 End Class
