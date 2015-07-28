@@ -21,4 +21,13 @@ Imports TheGameGenerator
         'TODO: add test fo every value
     End Sub
 
+    <TestMethod()> Public Sub TestMB_CPUPairs()
+        Dim DB As New TheGameGenerator.Database
+        Dim pairs = DB.GenerateMB_CPUPairs()
+        Assert.AreEqual(0, pairs.Count)
+        For Each pair As veci() In pairs
+            Assert.AreEqual(pair(0).socket, pair(1).socket)
+        Next
+    End Sub
+
 End Class
