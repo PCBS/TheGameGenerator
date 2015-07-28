@@ -10,6 +10,7 @@ Public Class Form1
         Log.Logger = (New LoggerConfiguration).WriteTo.LiterateConsole.WriteTo.File(logfile).MinimumLevel.Debug.CreateLogger()
         Log.Information("TheGameGenerator version {version}", My.Application.Info.Version.ToString)
         Log.Debug("Writing log to {logfile}", logfile)
+        Me.Text = "TheGameGenerator " & My.Application.Info.Version.ToString
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
