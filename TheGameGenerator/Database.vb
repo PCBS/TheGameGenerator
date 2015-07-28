@@ -34,8 +34,10 @@ Public Class Database
         Next
         Return MB_CPU_pairs
     End Function
-    Public Function GenerateGPUPairs()
-        Throw New NotImplementedException
+    Public Function GenerateGPUPairs(maxGPUs As Integer) As List(Of List(Of veci))
+        Dim groups As New List(Of List(Of veci))
+
+        Return groups
     End Function
     Public Function GenerateRAMPairs()
         Throw New NotImplementedException
