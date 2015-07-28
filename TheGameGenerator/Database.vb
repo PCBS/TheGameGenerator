@@ -39,6 +39,19 @@ Public Class Database
 
         Return groups
     End Function
+
+    Public Function GenerateGPUPairs() As List(Of List(Of veci))
+        Dim groups As New List(Of List(Of veci))
+        Dim gpus As New List(Of veci)
+        gpus.AddRange(DB.vecis.Where(Function(a) a.typ = "gpu"))
+        For Each gpu In gpus
+            Dim l As New List(Of veci)
+            l.Add(gpu)
+            groups.Add(l)
+        Next
+        Return groups
+    End Function
+
     Public Function GenerateRAMPairs()
         Throw New NotImplementedException
     End Function
