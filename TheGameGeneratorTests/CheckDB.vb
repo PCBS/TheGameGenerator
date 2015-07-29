@@ -1,5 +1,6 @@
 ﻿Imports System.Text
 Imports Microsoft.VisualStudio.TestTools.UnitTesting
+Imports TheGameGenerator
 
 <TestClass()> Public Class CheckDB
     Dim DB As New TheGameGenerator.Database
@@ -30,6 +31,7 @@ Imports Microsoft.VisualStudio.TestTools.UnitTesting
     '#End Region
 
     <DataSource("veci")> <TestMethod()> Public Sub TestVeciValues()
+        Dim DB As New Database
         Assert.IsNotNull(TestContext.DataRow)
         Assert.IsTrue(Integer.TryParse(TestContext.DataRow("idveci"), Nothing))
         Assert.IsFalse(TestContext.DataRow("nazev").ToString = "")
@@ -60,5 +62,4 @@ Imports Microsoft.VisualStudio.TestTools.UnitTesting
             Case Else
         End Select
     End Sub
-
 End Class
