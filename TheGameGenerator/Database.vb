@@ -34,30 +34,38 @@ Public Class Database
         Next
         Return MB_CPU_pairs
     End Function
-    Public Function GenerateGPUPairs(maxGPUs As UInteger) As List(Of List(Of veci)) 'TODO: logging and paralell
+    Public Function GenerateGPUPairs(Optional maxGPUs As UInteger = 0) As List(Of List(Of veci)) 'TODO: logging and paralell
         Select Case maxGPUs
             Case 0
+                Log.Information("Assuming {maxmbgpu} gpus in mb", DB.vecis.Where(Function(v) v.typ = "mb").Max(Function(mb) CInt(mb.sloty.Split(";")(1))))
                 Return (GenerateGPUPairs(DB.vecis.Where(Function(v) v.typ = "mb").Max(Function(mb) CInt(mb.sloty.Split(";")(1)))))
             Case 1
                 Dim groups As New List(Of List(Of veci))
                 Dim gpus As New List(Of veci)
-                gpus.AddRange(DB.vecis.Where(Function(a) a.typ = "gpu"))
+                SyncLock DB.vecis
+                    gpus.AddRange(DB.vecis.Where(Function(a) a.typ = "gpu"))
+                End SyncLock
                 For Each gpu In gpus
                     Dim l As New List(Of veci)
                     l.Add(gpu)
                     groups.Add(l)
                 Next
+                Log.Debug("Selected {gpus} lists", groups.Count)
                 Return groups
             Case Else
                 Dim groups As New List(Of List(Of veci))
-                For Each gpulist In GenerateGPUPairs(maxGPUs - 1)
-                    For Each gpu In GenerateGPUPairs(1)
-                        Dim l As New List(Of veci)
-                        l.AddRange(gpulist)
-                        l.AddRange(gpu)
-                        groups.Add(l)
-                    Next
-                Next
+                Parallel.ForEach(Of List(Of veci))(GenerateGPUPairs(maxGPUs - 1), _
+                                                   Sub(gpulist)
+                                                       For Each gpu In GenerateGPUPairs(1)
+                                                           Dim l As New List(Of veci)
+                                                           l.AddRange(gpulist)
+                                                           l.AddRange(gpu)
+                                                           SyncLock groups
+                                                               groups.Add(l)
+                                                           End SyncLock
+                                                       Next
+                                                   End Sub)
+                Log.Debug("Selected {gpus} lists", groups.Count)
                 Return groups
         End Select
     End Function
