@@ -34,7 +34,7 @@ Public Class Database
         Next
         Return MB_CPU_pairs
     End Function
-    Public Function GenerateGPUPairs(maxGPUs As UInteger) As List(Of List(Of veci))
+    Public Function GenerateGPUPairs(maxGPUs As UInteger) As List(Of List(Of veci)) 'TODO: logging and paralell
         Select Case maxGPUs
             Case 0
                 Return (GenerateGPUPairs(DB.vecis.Where(Function(v) v.typ = "mb").Max(Function(mb) CInt(mb.sloty.Split(";")(1)))))
