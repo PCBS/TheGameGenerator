@@ -8,21 +8,22 @@ Public Class Form1
         Me.BringToFront()
         Dim logfile As String = My.Computer.FileSystem.GetTempFileName()
         Log.Logger = (New LoggerConfiguration).WriteTo.LiterateConsole.WriteTo.File(logfile).MinimumLevel.Debug.CreateLogger()
-        Log.Information("TheGameGenerator version {version}", My.Application.Deployment.CurrentVersion)
-        Log.Information("Checking for update")
-        Dim info = My.Application.Deployment.CheckForDetailedUpdate()
-        If info.UpdateAvailable Then
-            Log.Information("Updating to {version} ({size} bytes)", info.AvailableVersion, info.UpdateSizeBytes)
-            Log.Debug("Update info {@info}", info)
-            If My.Application.Deployment.Update() Then
-                Log.Information("Update to {version} succeeded!", info.AvailableVersion)
-            Else
-                Log.Fatal("Update failed: {@info}", info)
-            End If
-        Else
-            Log.Information("No update found!")
-        End If
         Log.Debug("Writing log to {logfile}", logfile)
+        Log.Information("TheGameGenerator version {version}", My.Application.Info.Version.ToString)
+        ''UPDATES propably not necessary
+        'Log.Information("Checking for update")
+        'Dim info = My.Application.Deployment.CheckForDetailedUpdate()
+        'If info.UpdateAvailable Then
+        '    Log.Information("Updating to {version} ({size} bytes)", info.AvailableVersion, info.UpdateSizeBytes)
+        '    Log.Debug("Update info {@info}", info)
+        '    If My.Application.Deployment.Update() Then
+        '        Log.Information("Update to {version} succeeded!", info.AvailableVersion)
+        '    Else
+        '        Log.Fatal("Update failed: {@info}", info)
+        '    End If
+        'Else
+        '    Log.Information("No update found!")
+        'End If
         Me.Text = "TheGameGenerator " & My.Application.Info.Version.ToString
     End Sub
 
