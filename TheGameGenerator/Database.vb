@@ -74,8 +74,23 @@ Public Class Database
         Throw New NotImplementedException
     End Function
 
-    Public Function GenerateAllPCs()
+    Public Function GenerateHDDlist()
         Throw New NotImplementedException
+    End Function
+
+    Public Function GenerateAllPCs() As List(Of PC)
+        Dim PCs As New List(Of PC)
+        For Each mb_cpu In GenerateGPUPairs()
+            For Each gpus In GenerateGPUPairs()
+                For Each ram In GenerateRAMPairs()
+                    For Each hdd In GenerateHDDlist()
+                        Dim pc As New PC(mb_cpu(0), mb_cpu(1), gpus, ram, hdd, DB)
+                        PCs.Add(pc)
+                    Next
+                Next
+            Next
+        Next
+        Return PCs
     End Function
 
 #End Region

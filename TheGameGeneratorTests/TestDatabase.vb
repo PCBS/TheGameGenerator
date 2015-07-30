@@ -46,4 +46,9 @@ Imports TheGameGenerator
         Assert.AreEqual(count, pairs.Count, 0, "There are not exactly " & count & " GPU pairs. Did the Database change?")
     End Sub
 
+    <TestMethod()> Public Sub TestGenerateAllPCs()
+        Dim Data As New TheGameGenerator.Database
+        Assert.IsNotNull(Data.GenerateAllPCs())
+    End Sub
+
 End Class
