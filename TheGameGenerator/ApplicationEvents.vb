@@ -9,9 +9,6 @@
     ' NetworkAvailabilityChanged: Raised when the network connection is connected or disconnected.
     Partial Friend Class MyApplication
 
-        Private Sub MyApplication_UnhandledException(sender As Object, e As ApplicationServices.UnhandledExceptionEventArgs) Handles Me.UnhandledException
-            'MsgBox(e.Exception.ToString, MsgBoxStyle.Critical, Err.Number & " - " & Err.Description)
-        End Sub
     End Class
 
 End Namespace
